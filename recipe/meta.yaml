@@ -1,44 +1,60 @@
-{% set version = "1.0.2.post2" %}
-{% set gh_org = "DEAP" %}
-{% set gh_repo = "deap" %}
-{% set pkg_name = "DEAP" %}
-{% set commit = "a4dc75208662ce40158ba0c9eb0045d0bcc66d70" %}
+{% set version = "1.2.2" %}
+{% set name = "deap" %}
+{% set sha256 = "95c63e66d755ec206c80fdb2908851c0bef420ee8651ad7be4f0578e9e909bcf" %}
 
 package:
-  name: {{ gh_repo }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ gh_repo }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ gh_repo[0] }}/{{ gh_repo }}/{{ gh_repo }}-{{ version }}.tar.gz
-  sha256: c52bd32b8f0143db3a0b90f2b976c920b588638d6999ca0d038d8b1c07f7950b
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 95c63e66d755ec206c80fdb2908851c0bef420ee8651ad7be4f0578e9e909bcf
 
 build:
   number: 0
   script:
-    - python setup.py install
+    - python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
-    - numpy
+    - numpy x.x
     - pypandoc
     - python
+    - setuptools
+    - toolchain
 
   run:
+    - numpy x.x
     - python
-    - numpy
 
 test:
   requires:
-    - numpy
+    - nose
     - python
   imports:
     - deap
+    - deap.benchmarks
+    - deap.tests
+    - deap.tools
+    - deap.tools._hypervolume
+  commands:
+    - nosetests deap.tests
 
 about:
-  home: https://github.com/{{ gh_org }}/{{ gh_repo }}
+  home: https://github.com/deap
   license: LGPL-3.0
+  license_family: LGPL
+  license_file: LICENSE.txt
   summary: Distributed Evolutionary Algorithms in Python
+  docs_url: https://deap.readthedocs.io
+  dev_url: https://github.com/deap/deap
+  description: |
+    DEAP is a novel evolutionary computation framework for rapid prototyping and testing of
+    ideas. It seeks to make algorithms explicit and data structures transparent. It works
+    in perfect harmony with parallelisation mechanism such as multiprocessing and SCOOP. The
+    following documentation presents the key concepts and many features to build your own
+    evolutions.
 
 extra:
   recipe-maintainers:
