@@ -14,18 +14,20 @@ source:
 build:
   number: 0
   script:
+    - python setup.py build_ext -I${PREFIX}/include  # [unix]
+    - python setup.py build_ext -I"%LIBRARY_INC%"  # [win]
     - python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
   build:
-    - numpy x.x
+    - numpy >=1.5
     - pypandoc
     - python
     - setuptools
     - toolchain
 
   run:
-    - numpy x.x
+    - numpy >=1.5
     - python
 
 test:
