@@ -49,7 +49,7 @@ about:
   license_family: LGPL
   license_file: LICENSE.txt
   summary: Distributed Evolutionary Algorithms in Python
-  docs_url: https://deap.readthedocs.io
+  doc_url: https://deap.readthedocs.io
   dev_url: https://github.com/deap/deap
   description: |
     DEAP is a novel evolutionary computation framework for rapid prototyping and testing of
