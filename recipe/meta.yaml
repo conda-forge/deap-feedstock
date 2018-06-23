@@ -20,14 +20,16 @@ build:
 
 requirements:
   build:
-    - numpy >=1.5
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - numpy
     - pypandoc
     - python
     - setuptools
-    - toolchain
 
   run:
-    - numpy >=1.5
+    - numpy
     - python
 
 test:
