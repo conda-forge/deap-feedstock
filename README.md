@@ -19,14 +19,16 @@ evolutions.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/deap-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/deap-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/deap-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/deap-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/deap-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/deap-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/deap-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/deap-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/deap-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/deap-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/deap-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/deap-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/deap/badges/version.svg)](https://anaconda.org/conda-forge/deap)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/deap/badges/downloads.svg)](https://anaconda.org/conda-forge/deap)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-deap-green.svg)](https://anaconda.org/conda-forge/deap) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/deap.svg)](https://anaconda.org/conda-forge/deap) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/deap.svg)](https://anaconda.org/conda-forge/deap) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/deap.svg)](https://anaconda.org/conda-forge/deap) |
 
 Installing deap
 ===============
