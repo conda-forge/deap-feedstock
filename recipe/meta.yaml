@@ -1,6 +1,6 @@
-{% set version = "1.2.2" %}
+{% set version = "1.3.0" %}
 {% set name = "deap" %}
-{% set sha256 = "95c63e66d755ec206c80fdb2908851c0bef420ee8651ad7be4f0578e9e909bcf" %}
+{% set sha256 = "cd0fd7bccf7837b9e6a666b75e1c3a629fa3f5bc346cb90a9edd8cd56f085980" %}
 
 package:
   name: {{ name }}
@@ -9,10 +9,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 95c63e66d755ec206c80fdb2908851c0bef420ee8651ad7be4f0578e9e909bcf
+  sha256: cd0fd7bccf7837b9e6a666b75e1c3a629fa3f5bc346cb90a9edd8cd56f085980
 
 build:
-  number: 1000
+  number: 0
   script:
     - python setup.py build_ext -I${PREFIX}/include  # [unix]
     - python setup.py build_ext -I"%LIBRARY_INC%"  # [win]
