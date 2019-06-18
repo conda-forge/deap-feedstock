@@ -1,7 +1,7 @@
 About deap
 ==========
 
-Home: https://github.com/deap
+Home: https://github.com/DEAP/deap
 
 Package license: LGPL-3.0
 
