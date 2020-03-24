@@ -35,6 +35,7 @@ test:
     - nose
     - nose-cov
     - python
+    - pip
   imports:
     - deap
     - deap.benchmarks
@@ -42,6 +43,7 @@ test:
     - deap.tools
     - deap.tools._hypervolume
   commands:
+    - python -m pip check
     - nosetests deap.tests --with-cov --cov deap
 
 about:
