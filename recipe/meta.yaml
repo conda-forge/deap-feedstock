@@ -10,7 +10,7 @@ source:
   sha256: 11f54493ceb54aae10dde676577ef59fc52d52f82729d5a12c90b0813c857a2f
 
 build:
-  number: 1
+  number: 2
   script:
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
