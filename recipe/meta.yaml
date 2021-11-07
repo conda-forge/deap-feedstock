@@ -1,17 +1,19 @@
-{% set name = "deap" %}
 {% set version = "1.3.1" %}
 
 package:
-  name: {{ name }}
+  name: deap
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/d/deap/deap-{{ version }}.tar.gz
   sha256: 11f54493ceb54aae10dde676577ef59fc52d52f82729d5a12c90b0813c857a2f
+  patches:
+    - 0000-no-2to3.patch  # [py>=35]
 
 build:
   number: 3
   script:
+    - 2to3 --output-dir={{ SRC_DIR }} -W -n {{ SRC_DIR }}  # [py>=35]
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
     - {{ PYTHON }} -m pip install . --no-deps -vv
@@ -25,26 +27,24 @@ requirements:
     - pypandoc
     - python
     - pip
-
   run:
     - numpy
     - python
 
 test:
   requires:
-    - nose
-    - nose-cov
+    - nose  # [py<=39]
+    - nose-cov  # [py<=39]
     - python
     - pip
   imports:
     - deap
     - deap.benchmarks
-    - deap.tests
     - deap.tools
     - deap.tools._hypervolume
   commands:
     - python -m pip check
-    - nosetests deap.tests --with-cov --cov deap
+    - nosetests deap.tests --with-cov --cov deap  # [py<=39]
 
 about:
   home: https://github.com/DEAP/deap
