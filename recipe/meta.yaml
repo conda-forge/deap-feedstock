@@ -11,7 +11,7 @@ source:
     - 0000-no-2to3.patch  # [py>=35]
 
 build:
-  number: 3
+  number: 4
   script:
     - 2to3 --output-dir={{ SRC_DIR }} -W -n {{ SRC_DIR }}  # [py>=35]
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
