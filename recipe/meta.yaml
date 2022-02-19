@@ -24,7 +24,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - numpy
-    - pypandoc
+    - pypandoc # [not osx]
     - python
     - pip
   run:
