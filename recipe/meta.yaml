@@ -7,13 +7,10 @@ package:
 source:
   url: https://pypi.io/packages/source/d/deap/deap-{{ version }}.tar.gz
   sha256: 359f9441af0ce3e59a4688ae90cace0a1a4861f0b901545bf850a6fa571a90fd
-  patches:
-    - 0000-no-2to3.patch  # [py>=35]
 
 build:
   number: 0
   script:
-    - 2to3 --output-dir={{ SRC_DIR }} -W -n {{ SRC_DIR }}  # [py>=35]
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
     - {{ PYTHON }} -m pip install . --no-deps -vv
