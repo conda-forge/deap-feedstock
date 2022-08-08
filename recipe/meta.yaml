@@ -1,4 +1,4 @@
-{% set version = "1.3.2" %}
+{% set version = "1.3.3" %}
 
 package:
   name: deap
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/deap/deap-{{ version }}.tar.gz
-  sha256: 359f9441af0ce3e59a4688ae90cace0a1a4861f0b901545bf850a6fa571a90fd
+  sha256: 8772f1b0fff042d5e516b0aebac2c706243045aa7d0de8e0b8658f380181cf31
 
 build:
   skip: true  # [py<37]
