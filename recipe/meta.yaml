@@ -14,7 +14,7 @@ build:
   script:
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
-    - {{ PYTHON }} -m pip install . --no-deps -vv
+    - {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
 
 requirements:
   build:
@@ -26,7 +26,6 @@ requirements:
 
   host:
     - numpy
-    - pypandoc  # [not (osx and not x86_64)]
     - python
     - pip
   run:
@@ -34,10 +33,10 @@ requirements:
     - python
 
 test:
+  source_files:
+    - tests
   requires:
-    - nose  # [py<=39]
-    - nose-cov  # [py<=39]
-    - python
+    - pytest-cov
     - pip
   imports:
     - deap
@@ -45,8 +44,8 @@ test:
     - deap.tools
     - deap.tools._hypervolume
   commands:
-    - python -m pip check
-    - nosetests deap.tests --with-cov --cov deap  # [py<=39]
+    - pip check
+    - pytest -vv --cov=deap --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=37
 
 about:
   home: https://github.com/DEAP/deap
@@ -56,7 +55,7 @@ about:
   summary: Distributed Evolutionary Algorithms in Python
   doc_url: https://deap.readthedocs.io
   dev_url: https://github.com/deap/deap
-  doc_source_url: https://github.com/DEAP/deap/tree/master/doc
+  doc_source_url: https://github.com/DEAP/deap/tree/{{ version }}/doc
   description: |
     DEAP is a novel evolutionary computation framework for rapid prototyping and testing of
     ideas. It seeks to make algorithms explicit and data structures transparent. It works
