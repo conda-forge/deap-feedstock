@@ -10,7 +10,7 @@ source:
 
 build:
   skip: true  # [py<37]
-  number: 1
+  number: 2
   script:
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
@@ -19,6 +19,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
