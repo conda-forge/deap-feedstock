@@ -10,7 +10,7 @@ source:
 
 build:
   skip: true  # [py<37]
-  number: 2
+  number: 3
   script:
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
