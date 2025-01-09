@@ -1,16 +1,16 @@
-{% set version = "1.4.1" %}
+{% set version = "1.4.2" %}
 
 package:
   name: deap
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/d/deap/deap-{{ version }}.tar.gz
-  sha256: cc01de9892dfa7d1bc9803dab28892fead177f0182c81db47360a240ead778ff
+  url: https://pypi.org/packages/source/d/deap/deap-{{ version }}.tar.gz
+  sha256: d679be3373db8ba912b4664260ca29c7aca10372ff5a968231047b49efc22ac5
 
 build:
   skip: true  # [py<37]
-  number: 3
+  number: 0
   script:
     - {{ PYTHON }} setup.py build_ext -I{{ PREFIX }}/include  # [unix]
     - {{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"  # [win]
