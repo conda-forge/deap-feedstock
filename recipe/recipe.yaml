@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: 1.4.3
+
+package:
+  name: deap
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/d/deap/deap-${{ version }}.tar.gz
+  sha256: 7c97088fb05835bdc255bec475cb0e778de2b43e44cbefbf2bcd655aeec865fd
+
+build:
+  number: 0
+  script:
+    - if: unix
+      then:
+        - ${{ PYTHON }} setup.py build_ext -I${{ PREFIX }}/include
+      else:
+        - ${{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"
+    - ${{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation --disble-pip-version-checl
+
+requirements:
+  build:
+    - ${{ compiler("c") }}
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - if: build_platform != target_platform
+      then:
+        - cross-python_${{ target_platform }}
+        - numpy
+        - python
+  host:
+    - numpy
+    - pip
+    - python
+    - setuptools
+  run:
+    - numpy
+    - python
+
+tests:
+  - python:
+      imports:
+        - deap
+        - deap.benchmarks
+        - deap.tools
+        - deap.tools._hypervolume
+  - files:
+      source:
+        - tests/
+    requirements:
+      run:
+        - pytest-cov
+        - pip
+    script:
+      - pip check
+      - pytest -vv --cov=deap --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=37
+
+about:
+  license: LGPL-3.0-or-later
+  license_file: LICENSE.txt
+  summary: Distributed Evolutionary Algorithms in Python
+  homepage: https://github.com/DEAP/deap
+  repository: https://github.com/deap/deap
+  documentation: https://deap.readthedocs.io
+  description: |
+    DEAP is a novel evolutionary computation framework for rapid prototyping and testing of
+    ideas. It seeks to make algorithms explicit and data structures transparent. It works
+    in perfect harmony with parallelisation mechanism such as multiprocessing and SCOOP. The
+    following documentation presents the key concepts and many features to build your own
+    evolutions.
+
+extra:
+  recipe-maintainers:
+    - bollwyvl
+    - rhiever
+    - tonyfast
