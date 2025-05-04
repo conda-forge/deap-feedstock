@@ -20,7 +20,7 @@ build:
         - ${{ PYTHON }} setup.py build_ext -I${{ PREFIX }}/include
       else:
         - ${{ PYTHON }} setup.py build_ext -I"%LIBRARY_INC%"
-    - ${{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation --disble-pip-version-checl
+    - ${{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation --disable-pip-version-check
 
 requirements:
   build:
