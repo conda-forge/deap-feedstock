@@ -13,7 +13,7 @@ source:
   sha256: 7c97088fb05835bdc255bec475cb0e778de2b43e44cbefbf2bcd655aeec865fd
 
 build:
-  number: 0
+  number: 1
   script:
     - if: unix
       then:
@@ -54,10 +54,9 @@ tests:
     requirements:
       run:
         - pytest-cov
-        - pip
     script:
-      - pip check
-      - pytest -vv --cov=deap --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=37
+      - coverage run --source=deap --branch -m pytest -vv --tb=long --color=yes
+      - coverage report --show-missing --skip-covered --fail-under=37
 
 about:
   license: LGPL-3.0-or-later
