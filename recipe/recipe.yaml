@@ -54,10 +54,9 @@ tests:
     requirements:
       run:
         - pytest-cov
-        - pip
     script:
-      - pip check
-      - pytest -vv --cov=deap --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=37
+      - coverage run --source=deap --branch -m pytest -vv --tb=long --color=yes
+      - coverage report --show-missing --skip-covered --fail-under=37
 
 about:
   license: LGPL-3.0-or-later
