@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: 1.4.3
+  version: "1.4.4"
 
 package:
   name: deap
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/d/deap/deap-${{ version }}.tar.gz
-  sha256: 7c97088fb05835bdc255bec475cb0e778de2b43e44cbefbf2bcd655aeec865fd
+  sha256: 50d4bd924fca5a16a3dba8bfdb1140a55e9c24ce50816ab4f5683d2f31c2d734
 
 build:
-  number: 1
+  number: 0
   script:
     - if: unix
       then:
