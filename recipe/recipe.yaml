@@ -46,9 +46,10 @@ tests:
     requirements:
       run:
         - pytest-cov
+        - python ${{ python_min }}.*
     script:
       - coverage run --source=deap --branch -m pytest -vv --tb=long --color=yes
-      - coverage report --show-missing --skip-covered --fail-under=37
+      - coverage report --show-missing --skip-covered --fail-under=41
 
 about:
   license: LGPL-3.0-or-later
